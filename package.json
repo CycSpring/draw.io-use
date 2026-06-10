@@ -1,0 +1,23 @@
+{
+  "name": "local-drawio-mcp",
+  "version": "1.0.0",
+  "description": "Local Draw.io MCP server backed by the installed desktop app.",
+  "main": "src/server.js",
+  "bin": {
+    "local-drawio-mcp": "src/server.js"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "smoke": "node scripts/smoke-test.js",
+    "test": "npm run smoke"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "fast-xml-parser": "^5.8.0",
+    "zod": "^4.4.3"
+  }
+}
