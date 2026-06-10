@@ -103,4 +103,4 @@ codex mcp add drawio -- node "$repo\src\server.js"
 - 布局要留白充足，模块文字短句分行，线条尽量少交叉，最后导出成 D:\Draw-workspace\current.drawio.png 方便预览
 ```
 ## 感谢
-感谢@https://github.com/DayuanJiang/next-ai-draw-io的借鉴
+感谢@https://github.com/DayuanJiang/next-ai-draw-io
