@@ -28,6 +28,26 @@ codex mcp add drawio -- node "D:\Program Files (x86)\Draw.io\draw.io-mcp\src\ser
 
 添加后重启 Codex，或重新打开会话，让 MCP 工具刷新。
 
+## Codex 自动安装
+
+当用户在 Codex 里说“@CycSpring/draw.io-use 给我装上这个 MCP”时，可以按下面流程安装：
+
+```powershell
+$repo = "$env:USERPROFILE\.codex\mcp\draw.io-use"
+New-Item -ItemType Directory -Force (Split-Path $repo) | Out-Null
+
+if (Test-Path "$repo\.git") {
+  git -C $repo pull
+} else {
+  git clone https://github.com/CycSpring/draw.io-use.git $repo
+}
+
+npm --prefix $repo install
+codex mcp add drawio -- node "$repo\src\server.js"
+```
+
+如果已经存在同名 `drawio` MCP，先移除旧配置或更新为新的 `server.js` 路径。
+
 ## 在 Codex 里怎么用
 
 可以直接用自然语言让 Codex 画图、改图、导出图，例如：
