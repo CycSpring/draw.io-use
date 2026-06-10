@@ -70,6 +70,7 @@ codex mcp add drawio -- node "$repo\src\server.js"
 - “读取当前 Draw.io 图，把网关模块改成 API Gateway。”
 - “在现有图里加一个 Redis 节点，连到后端服务。”
 - “把当前图导出成 `D:\Draw-workspace\exports\architecture.png`。”
+- “把当前图导出成 `D:\Draw-workspace\current.drawio.png`，我想直接看 PNG 预览。”
 
 常见协作流程：
 
