@@ -28,6 +28,20 @@ codex mcp add drawio -- node "D:\Program Files (x86)\Draw.io\draw.io-mcp\src\ser
 
 添加后重启 Codex，或重新打开会话，让 MCP 工具刷新。
 
+## Claude Code MCP
+
+本服务是标准 stdio MCP Server，Claude Code 也可以直接使用：
+
+```powershell
+claude mcp add drawio -- node "D:\Program Files (x86)\Draw.io\draw.io-mcp\src\server.js"
+```
+
+可以用下面命令检查连接状态：
+
+```powershell
+claude mcp get drawio
+```
+
 ## Codex 自动安装
 
 当用户在 Codex 里说“@CycSpring/draw.io-use 给我装上这个 MCP”时，可以按下面流程安装：
