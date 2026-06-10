@@ -80,3 +80,25 @@ codex mcp add drawio -- node "$repo\src\server.js"
 4. 继续让 Codex 用 `edit_diagram` 做局部修改，或用 `export_diagram` 导出成图片/PDF。
 
 注意：`create_new_diagram` 会覆盖当前工作文件；如果要保留旧图，先导出或复制一份。
+
+## 示例图与 Prompt
+
+下面是用本 MCP 生成并导出的 Hermes agent / Hermes Desktop 架构图示例：
+
+![Hermes Desktop 架构图](assets/hermes-desktop-architecture.png)
+
+可以把类似 prompt 直接发给 Codex 或 Claude Code：
+
+```text
+用 drawio 画一张 Hermes agent / Hermes Desktop 架构图，风格参考清爽的分层架构图：
+
+- 标题：Hermes Desktop 架构图
+- 横向四层：桌面交互层、应用编排层、本地能力层、外部服务层
+- 桌面交互层包含：用户、Hermes Desktop UI（聊天 / 设置 / 任务视图）
+- 应用编排层包含：Electron Main（窗口 / 托盘 / 生命周期）、IPC / Preload Bridge（权限边界 / 事件通道）、Gateway / Agent（会话编排 / 上下文与重试）
+- 本地能力层包含：MCP Tools（文件 / 终端 / Draw.io / 插件）、Local Store（配置 / 会话 / 日志 / 密钥引用）、OS Services（文件系统 / 网络 / 开机启动）
+- 外部服务层包含：Model API（OpenAI / Claude / 中转服务）、远程资源（插件市场 / 版本更新）
+- 用实线表示主链路：用户操作 -> UI -> IPC -> Gateway / Agent -> 模型 / 工具 -> UI 回显
+- 用虚线表示辅助链路：配置、日志、系统集成、插件更新
+- 布局要留白充足，模块文字短句分行，线条尽量少交叉，最后导出成 D:\Draw-workspace\current.drawio.png 方便预览
+```
