@@ -1,14 +1,12 @@
 # Local Draw.io MCP
 
-本项目提供一个本地 Draw.io MCP 服务，使用已安装的桌面版：
-
-`D:\Program Files (x86)\Draw.io\draw.io.exe`
+本项目提供一个本地 Draw.io MCP 服务，使用已安装的桌面版 Draw.io。
 
 服务会维护默认工作文件：
 
 `D:\Draw-workspace\current.drawio`
 
-默认工作文件放在不带空格的目录里，避免 Draw.io 桌面版打开 `Program Files (x86)` 这类路径时把参数拆坏。
+默认工作文件放在不带空格的目录里，避免 Draw.io 桌面版打开 `Program Files (x86)` 这类路径时把参数拆坏。Draw.io 可执行文件会自动从常见安装路径发现，也可以用 `DRAWIO_EXE` 环境变量指定。
 
 ## Tools
 
@@ -20,7 +18,21 @@
 
 如果你在桌面版 Draw.io 里手动调整了图，保存后 MCP 会继续读取同一个工作文件并在此基础上编辑。
 
+`create_new_diagram` 和 `edit_diagram` 会在覆盖当前图之前自动备份到 `D:\Draw-workspace\backups`。
+
+## 安装
+
+推荐用安装脚本注册 Codex MCP：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-codex.ps1
+```
+
+脚本会自动查找 Draw.io、创建 `D:\Draw-workspace`、安装依赖、注册 Codex MCP，并运行 smoke test。
+
 ## Codex MCP
+
+也可以手动注册：
 
 ```powershell
 codex mcp add drawio -- node "D:\Program Files (x86)\Draw.io\draw.io-mcp\src\server.js"
@@ -57,7 +69,7 @@ if (Test-Path "$repo\.git") {
 }
 
 npm --prefix $repo install
-codex mcp add drawio -- node "$repo\src\server.js"
+powershell -ExecutionPolicy Bypass -File "$repo\scripts\install-codex.ps1"
 ```
 
 如果已经存在同名 `drawio` MCP，先移除旧配置或更新为新的 `server.js` 路径。
